@@ -28,6 +28,22 @@ public class userController {
 
         return b;
     }
+    
+     @GetMapping("/User/get")
+    public ArrayList<userInfo> getUsers(){
+
+        ArrayList<userInfo> info=new ArrayList<>();
+        ArrayList<User> users =dataSystem.get_allU();
+        for (int i = 0; i < users.size(); i++) {
+            userInfo temp=new userInfo( users.get(i).getUserName() , users.get(i).getEmail() , users.get(i).getMobilNumber(), users.get(i).getPassword());
+            info.add(temp);
+
+        }
+
+
+        return info;
+
+    }
 
    
     @GetMapping("/User/login")
