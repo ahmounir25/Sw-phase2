@@ -27,29 +27,8 @@ public class AdminController {
             return null;
     }
 
-    @GetMapping("/suspend")
-    @ResponseBody
-    public String suspend(@RequestParam String email ){
-        Admin a=new Admin();
-        int flag=0;
-        for (int i = 0; i < dataSystem.drivers.size(); i++) {
-            if (email.equals(dataSystem.drivers.get(i).getEmail())) {
-                a.suspend(dataSystem.drivers.get(i));
-                flag=1;
-            }
-        }
-        for (int i = 0; i < dataSystem.users.size(); i++) {
-            if (email.equals(dataSystem.users.get(i).getEmail())) {
-                a.suspend(dataSystem.users.get(i));
-                flag=1;
-            }
-        }
-        if(flag==1)
-            return " Suspended";
-        else
-            return " Email Not Founded ";
-
-    }
+   
+    
     @GetMapping("/get_pendingList")
     public ArrayList<Driver> pendList(){
         Admin a=new Admin();
